@@ -1,0 +1,15 @@
+%h2 Change your password
+= content_for :title, 'Change your password'
+= bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+  = f.hidden_field :reset_password_token
+  .field
+    = f.password_field :password
+    - if @minimum_password_length
+      %em.form-text
+        (#{@minimum_password_length} characters minimum)
+      %br/
+  .field
+    = f.password_field :password_confirmation
+  .actions
+    = f.primary "Change my password"
+= render "devise/shared/links"

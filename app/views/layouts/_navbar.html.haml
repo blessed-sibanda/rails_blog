@@ -1,0 +1,28 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container
+    = link_to 'Rails Blog', root_path, class: 'navbar-brand'
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        %li.nav-item
+          = link_to 'Home', root_path, class: "nav-link #{'active' if current_page?('/')}"
+        - if user_signed_in?
+          %li.nav-item
+            = link_to 'Admin', admin_root_path, class: "nav-link #{'active' if current_page?('/admin')}"
+          %li.nav-item.dropdown
+            %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
+              Account
+            %ul.dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+              %li= link_to 'Edit Account', edit_user_registration_path, class: 'dropdown-item'
+              %li
+                %hr.dropdown-divider/
+              %li= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
+        - else
+          %li.nav-item
+            = link_to 'Login', new_user_session_path, class: "nav-link #{'active' if current_page?('/users/sign_in')}"
+          %li.nav-item
+            = link_to 'Register', new_user_registration_path, class: "nav-link #{'active' if current_page?('/users/sign_up')}"
+      = form_for :search, url: root_path, method: :get, html: {class: 'd-flex'} do
+        = text_field_tag :keywords, params[:keywords], placeholder: 'Search Post title, content..', class: 'form-control me-2', type: 'search'
+        %button.btn.btn-outline-success{:type => "submit"} Search

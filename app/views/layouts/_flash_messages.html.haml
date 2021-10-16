@@ -1,0 +1,9 @@
+.my-3
+  - if notice
+    .alert.alert-success.alert-dismissible.fade.show
+      = notice
+      %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "alert", :type => "button"}
+  - if alert
+    .alert.alert-danger.alert-dismissible.fade.show
+      = alert
+      %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "alert", :type => "button"}

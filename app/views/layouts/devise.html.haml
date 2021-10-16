@@ -1,0 +1,10 @@
+!!!
+%html
+  = render 'layouts/head'
+  %body
+    = render 'layouts/navbar'
+    .container
+      .row.justify-content-center
+        .col-lg-4.col-md-5.col-sm-8
+          = render 'layouts/flash_messages'
+          = yield

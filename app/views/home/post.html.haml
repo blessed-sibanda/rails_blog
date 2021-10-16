@@ -1,0 +1,29 @@
+%article.post{:id => "#{dom_id(@post)}"}
+  = render 'posts/post_details', post: @post
+
+  - comments = @post.comments.select(&:persisted?)
+  - if comments.any?
+    %h4.mt-4 Comments
+  .comments{:id => "#{dom_id(@post)}_comments"}
+    = render comments
+
+  .mt-4
+  = render 'comments/form', comment: @post.comments.build
+
+= content_for :sidebar do
+  .mb-3
+    %p.subheader About the Author
+    = render_user_profile(@post.author) do
+      = render 'subscriptions/links', author: @post.author
+
+  - similar_posts = @post.similar_posts
+
+  - if similar_posts.any?
+    %h5 Similar Posts
+    - @post.similar_posts.each do |post|
+      = render 'posts/post_card', post: post
+
+  - else
+    %h5 Popular Posts
+    - Post.popular.each do |post|
+      = render 'posts/post_card', post: post

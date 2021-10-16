@@ -1,0 +1,8 @@
+.modal.fade{id: "#{id}"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h5.modal-title= title
+        %button.btn-close{'data-bs-dismiss' => 'modal'}
+      .modal-body
+        = yield

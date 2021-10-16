@@ -1,0 +1,30 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.post > .comments {
+  @extend .mt-2;
+  @extend .border-bottom;
+
+  .comment {
+    @extend .border-top, .pb-0;
+    @extend .border-start, .border-1, .border-0;
+
+    .comment-header {
+      @extend .d-flex, .justify-content-sm-between;
+      @extend .flex-column, .flex-sm-row;
+      @extend .bg-light, .ps-3, .pe-2, .pt-2, .pb-1, .mb-2;
+    }
+
+    .comment-info {
+      @extend .ps-3;
+    }
+
+    .comment-footer {
+      @extend .py-2;
+    }
+  }
+
+  .comment-form {
+    @extend .mt-4;
+  }
+}

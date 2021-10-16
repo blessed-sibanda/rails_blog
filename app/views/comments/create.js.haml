@@ -1,0 +1,27 @@
+var commentableEl = document.querySelector('##{j "#{dom_id(@comment.commentable)}"}');
+var commentForm = document.querySelector(
+'##{j "#{@comment.commentable_type}_#{@comment.commentable_id}_comment_form"}',
+);
+- if @comment.persisted?
+  var commentsEl = commentableEl.querySelector('.comments')
+  
+  commentsEl.innerHTML = "#{j render(@comment.commentable.comments)}"
+  commentForm.outerHTML = "#{j render('comments/form', comment: @comment.commentable.comments.build)}";
+  
+  var modal = document.querySelector('##{"modal_#{dom_id(@comment.commentable)}"}')
+  
+  var backdrop = document.querySelector('.modal-backdrop')
+  
+  if (modal) {
+  modal.classList.toggle('show');
+  }
+  
+  if (backdrop) {
+  backdrop.remove()
+  }
+  
+  document.body.classList.toggle('modal-open');
+  document.body.removeAttribute('data-bs-padding-right');
+  document.body.removeAttribute('style');
+- else
+  commentForm.outerHTML = "#{j render('comments/form', comment: @comment)}";

@@ -1,0 +1,13 @@
+.field,
+.actions {
+  @extend .my-3;
+}
+
+input[type='submit'] {
+  width: 100%;
+  @extend .btn-primary;
+}
+
+.custom-file-label {
+  @extend .d-none;
+}

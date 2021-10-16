@@ -1,0 +1,13 @@
+%head
+  %title
+    - base_title = 'Rails Blog'
+    - if content_for(:title)
+      = base_title + " | " + yield(:title)
+    - else
+      = base_title
+  %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+  = csrf_meta_tags
+  = csp_meta_tag
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+  = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  = yield :head_scripts

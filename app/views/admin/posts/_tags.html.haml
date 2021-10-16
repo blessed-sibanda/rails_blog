@@ -1,0 +1,8 @@
+.tags
+  - post.tags.each do |tag|
+    .tag{:id => "#{dom_id(tag)}"}
+      = link_to "<span></span>".html_safe,                    |
+        remove_tag_admin_post_path(id: post, tag_id: tag.id), |
+        method: :delete, remote: true,                        |
+        class: "remove-tag", title: "Remove Tag"              |
+      = tag.name

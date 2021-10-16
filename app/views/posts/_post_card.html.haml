@@ -1,0 +1,6 @@
+.post-card
+  .content
+    %h6= link_to post.title, post_detail_path(post.published, post.slug), class: 'post-title'
+    %span.date
+      = time_ago_in_words(post.created_at)
+      ago

@@ -1,0 +1,11 @@
+.comment{:id => "#{dom_id(comment)}"}
+  .comment-header
+    %h6= comment.name
+    %small= comment.created_at.to_s(:long)
+  .comment-info
+    .comment-content
+      = comment.content
+    .comment-footer
+      = render 'comments/reply', commentable: comment
+    .comments{id: "#{dom_id(comment)}_comments"}
+      = render comment.comments.select(&:persisted?)

@@ -1,0 +1,26 @@
+@import 'bootswatch/dist/zephyr/variables';
+@import 'bootstrap/scss/bootstrap';
+@import 'bootswatch/dist/zephyr/bootswatch';
+
+@import 'posts';
+@import 'forms';
+@import 'comments';
+@import 'tags';
+
+.avatar-container {
+  display: block;
+  margin: 0 auto;
+  @extend .pt-3;
+
+  img.avatar-img {
+    border-radius: 50%;
+    object-fit: cover;
+    height: 170px;
+    width: 170px;
+    border: 1px solid #eee;
+  }
+}
+
+p.subheader {
+  @extend .lead, .text-uppercase, .text-center, .mb-0;
+}

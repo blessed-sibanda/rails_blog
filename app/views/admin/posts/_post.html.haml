@@ -1,0 +1,15 @@
+%body
+  .post-item{:id => "#{dom_id(post)}"}
+    %header.post-item-header
+      %div
+        %span.h3.me-sm-3= post.title
+        %span.badge.bg-secondary.rounded= post.status
+      %ul.actions
+        %li= link_to 'Preview', admin_post_path(post), class: 'show'
+        %li= link_to 'Edit', edit_admin_post_path(post), class: 'edit'
+        %li= link_to 'Delete', admin_post_path(post), method: :delete, data: {confirm: 'Are you sure?'}, class: 'delete'
+    .post-item-content
+      = truncate(post.content.to_plain_text, length: 300)
+    .post-item-footer
+      = render_tags(post)
+      = render 'admin/posts/status', post: post

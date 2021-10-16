@@ -1,0 +1,8 @@
+- modal_id = "modal_#{dom_id(commentable)}"
+= render 'shared/modal', id: modal_id, title: "Reply #{commentable.class.name}" do
+  .bg-light.p-2
+    = commentable.content
+  = render partial: 'comments/form', locals: {comment: commentable.comments.build, commentable: commentable}
+
+%a.reply-link{"data-bs-target" => "##{modal_id}", "data-bs-toggle" => "modal", :href => "#"}
+  Reply

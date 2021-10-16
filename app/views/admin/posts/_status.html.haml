@@ -1,0 +1,7 @@
+.post-status
+  - if post.status == 'Draft'
+    = link_to 'Publish', toggle_status_admin_post_path(post), remote: true, |
+      method: :patch, class: 'publish'                                      |
+  - elsif post.status == 'Published'
+    = link_to 'Unpublish', toggle_status_admin_post_path(post), remote: true, |
+      method: :patch, class: 'unpublish'                                      |

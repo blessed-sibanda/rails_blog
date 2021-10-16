@@ -1,0 +1,2 @@
+var post = document.getElementById('#{"post_#{@post.id}"}');
+post.outerHTML = "#{j render('admin/posts/post', post: @post)}";

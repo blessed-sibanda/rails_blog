@@ -1,0 +1,60 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+@import 'font-awesome';
+@import 'bootstrap';
+
+a.new {
+  @extend .btn, .btn-primary;
+
+  &:before {
+    font-family: 'FontAwesome';
+    @extend .fa-plus, .pe-1;
+  }
+}
+
+.tag {
+  @extend .me-1, .mb-1, .border, .rounded, .px-2, .py-1;
+  display: inline-block;
+  font-size: 110%;
+  color: black;
+  font-size: 85%;
+
+  a {
+    color: black;
+
+    &.remove-tag {
+      font-family: 'FontAwesome';
+      @extend .fa-close;
+      text-decoration: none;
+    }
+  }
+}
+
+a.publish,
+a.unpublish {
+  @extend .btn, .btn-sm;
+
+  &:before {
+    font-family: 'FontAwesome';
+    @extend .me-1;
+  }
+}
+
+a.publish {
+  @extend .btn-outline-success;
+
+  &:before {
+    @extend .fa-eye;
+  }
+}
+
+a.unpublish {
+  @extend .btn-outline-danger;
+
+  &:before {
+    @extend .fa-eye-slash;
+  }
+}

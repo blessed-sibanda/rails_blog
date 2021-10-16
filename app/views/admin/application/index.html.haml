@@ -1,0 +1,25 @@
+.d-flex.justify-content-between.align-items-center
+  %h1 Your Posts
+  = link_to 'New Post', new_admin_post_path, class: 'new'
+.posts
+  - @posts.each do |post|
+    = render 'admin/posts/post', post: post
+
+- content_for :sidebar do
+  %p.subheader
+    Your Profile
+    = link_to 'Edit', edit_user_registration_path, class: 'fw-bold link-info float-end text-decoration-none small'
+  = render_user_profile
+
+  %h5 Stats
+  %table.table.text-left.table-sm
+    %tbody
+      %tr
+        %th Subscribers
+        %td= current_user.subscribers.count
+      %tr
+        %th Posts
+        %td= current_user.posts.count
+      %tr
+        %th Total Views
+        %td= current_user.posts.sum(&:views_count)

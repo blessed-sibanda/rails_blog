@@ -1,0 +1,38 @@
+- content_for :head_scripts do
+  = javascript_pack_tag 'vue-image-uploader', 'data-turbolinks-track': 'reload'
+
+%h2
+  Edit #{resource_name.to_s.humanize}
+= content_for :title, "Edit #{resource_name.to_s.humanize}"
+= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, enctype: "multipart/form-data" }) do |f|
+  .field
+    %i.form-text (we need your current password to confirm your changes)
+    = f.password_field :current_password
+  - if current_user.avatar.attached?
+    = image_tag current_user.avatar.variant(resize_to_limit: [170, 170]), class: 'current-avatar'
+  .vue-image-uploader
+  .field
+    = f.text_field :name
+  .field
+    = f.email_field :email
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      .form-text
+        Currently waiting confirmation for: #{resource.unconfirmed_email}
+  .field
+    = f.text_area :about, rows: 5
+  .field
+    %i.form-text (leave blank if you don't want to change it)
+    = f.password_field :password
+    - if @minimum_password_length
+      %em.form-text
+        = @minimum_password_length
+        characters minimum
+  .field
+    = f.password_field :password_confirmation
+
+  .actions
+    = f.primary "Update"
+%h3 Cancel my account
+%p
+  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger'}
+= link_to "Back", :back

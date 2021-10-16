@@ -1,0 +1,12 @@
+.comment-form{id: "#{comment.commentable_type}_#{comment.commentable_id}_comment_form"}
+  %h4 Create New Comment
+  = bootstrap_form_with(model: [comment.commentable, comment], remote: true, html: {'data-remote': true}) do |f|
+    .field
+      = f.text_field :name
+    = f.hidden_field :commentable_id, value: comment.commentable.id
+    = f.hidden_field :commentable_type, value: comment.commentable.class
+    .field
+      = f.text_field :email, help: 'Your email address will not be published.'
+    .field
+      = f.text_area :content
+    = f.submit{'data-bs-dismiss' => 'modal'}

@@ -1,0 +1,16 @@
+.d-flex.justify-content-between.align-items-start.border-bottom.pb-0
+  %p
+    By
+    %span.fw-bold= link_to post.author.name, author_page(post)
+  %span
+    %small.help= post.created_at.to_s(:long)
+
+.d-flex.justify-content-sm-between.align-items-sm-center.flex-column.flex-sm-row
+  %h1.h2.mt-3= post.title
+  %span.me-4
+    = pluralize(post.views_count, 'view')
+    %i= fa_icon('eye')
+
+.mt-3.mb-2
+  = post.content
+= render 'posts/post_tags', post: post

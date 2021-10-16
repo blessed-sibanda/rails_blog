@@ -1,0 +1,15 @@
+= bootstrap_form_with(model: [:admin, post]) do |f|
+  .field
+    = f.text_field :title
+  .field
+    = f.rich_text_area :content
+  .field
+    = f.select :status, Post.statuses.keys
+  .field
+    = label_tag 'Tags'
+    = render_tags post
+    = text_field_tag 'post[tag_list]', "", class: 'form-control'
+    %p.form-text.py-0.my-0 Separate tag names with commas. Maximum of 4 tags is allowed
+    %p.form-text.py-0.my-0 If more than four tags are provided, the most recent four tags will be used
+  .actions
+    = f.primary

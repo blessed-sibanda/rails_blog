@@ -1,0 +1,9 @@
+- if user_signed_in?
+  - unless current_user.subscribed_to?(author)
+    #subscription-link
+      = link_to "Subscribe to this author's posts", subscription_path(id: author.id), class: 'btn btn-outline-info', remote: true, method: :patch,
+        title: "You will receive an email whenever #{author.name} publishes a post"
+- else
+  %em.text-info
+    = link_to 'Login', new_user_session_path,class: 'link-success'
+    to subscribe to this author
