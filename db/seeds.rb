@@ -7,7 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user = User.create!(email: "blessed@example.com",
-                    password: "1234pass")
+                    password: "1234pass",
+                    name: "Blessed Sibanda")
 
 Post.create!(
   title: "Why Rails is Awesome",

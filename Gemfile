@@ -69,3 +69,5 @@ gem "will_paginate", "~> 3.3.1"
 gem "will_paginate-bootstrap4", "~> 0.2.2"
 gem "pg_search", "~> 2.3.5"
 gem "haml-rails", "~> 2.0.1"
+
+gem "annotate", "~> 3.2", :group => :development

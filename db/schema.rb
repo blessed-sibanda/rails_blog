@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_10_15_124748) do
     t.string "slug", null: false
     t.bigint "author_id", null: false
     t.integer "status", default: 0, null: false
-    t.date "published", default: "2021-10-11", null: false
+    t.date "published", default: "2022-09-09", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "views_count", default: 0

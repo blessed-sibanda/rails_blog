@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id               :bigint           not null, primary key
+#  commentable_type :string
+#  content          :text
+#  email            :string
+#  name             :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  commentable_id   :bigint
+#
+# Indexes
+#
+#  index_comments_on_commentable  (commentable_type,commentable_id)
+#
 require "rails_helper"
 
 RSpec.describe Comment, type: :model do

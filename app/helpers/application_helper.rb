@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def author_page(post)
-    author_path(post.author_id, post.author.name.parameterize)
+    author_path(post.author_id, post.author&.name&.parameterize)
   end
 
   def render_user_profile(user = current_user, &block)
